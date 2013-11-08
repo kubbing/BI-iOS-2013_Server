@@ -1,0 +1,115 @@
+<h1>Welcome to Restofka</h1>
+
+
+<h2>Listing</h2>
+
+<h3>Request</h3>
+<pre>GET /feeds.json</pre>
+<h3>Response</h3>
+<pre>
+200
+[
+  {
+    "id":7,
+    "author":"Trixie",
+    "message":"Trixie znovu útočí..",
+    "image":{
+      "image":{
+        "url":"/uploads/feed/image/7/Trixie_walking_off_the_stage_S1E06.png",
+        "thumb":{
+          "url":"/uploads/feed/image/7/thumb_Trixie_walking_off_the_stage_S1E06.png"
+        },
+        "thumb_retina":{
+          "url":"/uploads/feed/image/7/thumb_retina_Trixie_walking_off_the_stage_S1E06.png"
+        },
+        "gallery":{
+          "url":"/uploads/feed/image/7/gallery_Trixie_walking_off_the_stage_S1E06.png"
+        },
+        "gallery_retina":{
+          "url":"/uploads/feed/image/7/gallery_retina_Trixie_walking_off_the_stage_S1E06.png"
+        }
+      }
+    },
+    "url":"http://localhost:3000/feeds/7.json"
+  },
+  {
+    "id":9,
+    "author":"Luna",
+    "message":"message",
+    "image":{
+      "image":{
+        "url":"/uploads/feed/image/9/princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png",
+        "thumb":{
+          "url":"/uploads/feed/image/9/thumb_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
+        },
+        "thumb_retina":{
+          "url":"/uploads/feed/image/9/thumb_retina_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
+        },
+        "gallery":{
+          "url":"/uploads/feed/image/9/gallery_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
+        },
+        "gallery_retina":{
+          "url":"/uploads/feed/image/9/gallery_retina_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
+        }
+      }
+    },
+    "url":"http://localhost:3000/feeds/9.json"
+  }
+]
+</pre>
+
+<h2>Creation</h2>
+
+<h3>Request</h3>
+<pre>POST /feeds.json</pre>
+<pre>
+{
+  "feed" : {
+	  "author" : "kuba hladik",
+	  "message" : "ahoj hello dobry den"
+  }
+}
+</pre>
+<h3>Response</h3>
+<pre>
+201
+</pre>
+
+<h2>Creation with Image</h2>
+
+<h3>Request</h3>
+<pre>POST /feeds (HTTP multipart)</pre>
+<h4>Header</h4>
+<pre>
+Content-Type: multipart/form-data; boundary=Boundary+0xAbCdEfGbOuNdArY
+</pre>
+<h4>Body</h4>
+<pre>
+--Boundary+0xAbCdEfGbOuNdArY
+Content-Disposition: form-data; name="feed[author]"
+
+jakub hladi
+--Boundary+0xAbCdEfGbOuNdArY
+Content-Disposition: form-data; name="feed[message]"
+
+2013-10-30 08:58:30 +0000
+--Boundary+0xAbCdEfGbOuNdArY
+Content-Disposition: form-data; name="feed[image]"; filename="photo.png"
+Content-Type: image/png
+
+?PNG binary image data
+</pre>
+<h3>Response</h3>
+<pre>
+201
+</pre>
+
+<h2>Deletion</h2>
+
+<h3>Request</h3>
+<pre>DELETE /feeds/<id>.json</pre>
+
+<h3>Response</h3>
+<pre>
+204
+</pre>

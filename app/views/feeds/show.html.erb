@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @feed.author %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @feed.message %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to( image_tag(@feed.image.gallery.url), @feed.image.url, target: '_blank' ) %>
+</p>
+
+<%= link_to 'Edit', edit_feed_path(@feed) %> |
+<%= link_to 'Back', feeds_path %>
