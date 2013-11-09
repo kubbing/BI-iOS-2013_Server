@@ -1,7 +1,7 @@
 <h1>Welcome to Restofka</h1>
 
 
-<h2>Listing</h2>
+<h2>Get list of feeds</h2>
 
 <h3>Request</h3>
 <pre>GET /feeds.json</pre>
@@ -58,7 +58,7 @@
 ]
 </pre>
 
-<h2>Creation</h2>
+<h2>Create new feed</h2>
 
 <h3>Request</h3>
 <pre>POST /feeds.json</pre>
@@ -75,7 +75,7 @@
 201
 </pre>
 
-<h2>Creation with Image</h2>
+<h2>Create new feed with image</h2>
 
 <h3>Request</h3>
 <pre>POST /feeds (HTTP multipart)</pre>
@@ -104,11 +104,46 @@ Content-Type: image/png
 201
 </pre>
 
-<h2>Deletion</h2>
+<h2>Delete feed</h2>
 
 <h3>Request</h3>
 <pre>DELETE /feeds/<id>.json</pre>
 
+<h3>Response</h3>
+<pre>
+204
+</pre>
+
+<h2>Create account</h2>
+
+<h3>Request</h3>
+<pre>POST /accounts.json</pre>
+<pre>
+{
+  "account" : {
+    "login" : "tady si neco vymyslete, zatim nepouzite",
+    "nick" : "vas nick",
+    "token" : "notifikancni token"
+  }
+}
+</pre>
+<h3>Response</h3>
+<pre>
+201
+</pre>
+
+
+<h2>Update notification token</h2>
+
+<h3>Request</h3>
+<pre>PUT /accounts/id.json</pre>
+<pre>
+{
+  "account" : {
+    "token" : "notifikancni token"
+  }
+}
+</pre>
 <h3>Response</h3>
 <pre>
 204

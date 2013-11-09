@@ -7,8 +7,6 @@
       <th>Nick</th>
       <th>Token</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -18,9 +16,9 @@
         <td><%= account.login %></td>
         <td><%= account.nick %></td>
         <td><%= account.token %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', account, class: 'btn btn-default btn-sm' %>
+        <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-default btn-sm' %>
+        <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Account', new_account_path %>
+<%= link_to 'New Account', new_account_path, class: 'btn btn-default' %>

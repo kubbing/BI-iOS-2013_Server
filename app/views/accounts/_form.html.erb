@@ -1,4 +1,4 @@
-<%= form_for(@account) do |f| %>
+<%= form_for(@account, html: { multipart: true, class: 'form-horizontal' }) do |f| %>
   <% if @account.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
@@ -11,19 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :login %><br>
-    <%= f.text_field :login %>
+  <div class='form-group'>
+      <%= f.label :login, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_field :login, placeholder: 'make something up', class: 'form-control' %>  
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :nick %><br>
-    <%= f.text_field :nick %>
+
+  <div class='form-group'>
+      <%= f.label :nick, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_field :nick, placeholder: 'your nickname', class: 'form-control' %>  
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :token %><br>
-    <%= f.text_field :token %>
+
+
+  <div class='form-group'>
+      <%= f.label :token, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_field :token, placeholder: 'push notification token', class: 'form-control' %>  
+      </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="actions col-md-offset-2">
+    <%= f.submit "Save Account", class: 'btn' %>
   </div>
 <% end %>

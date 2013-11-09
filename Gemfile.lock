@@ -37,13 +37,8 @@ GEM
       sshkit (>= 0.0.23)
     capistrano-bundler (1.0.0)
       capistrano (>= 3.0.0.pre)
-    capistrano-platform-resources (0.1.2)
-      capistrano
     capistrano-rails (1.0.0)
       capistrano
-    capistrano-rbenv (1.0.3)
-      capistrano
-      capistrano-platform-resources (>= 0.1.0)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -154,7 +149,6 @@ DEPENDENCIES
   capistrano
   capistrano-bundler
   capistrano-rails
-  capistrano-rbenv
   carrierwave
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
