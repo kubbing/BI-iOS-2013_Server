@@ -1,10 +1,12 @@
 set :application, 'BI-iOS-2013_Server'
 set :repo_url, 'git@github.com:kubbing/BI-iOS-2013_Server.git'
 
+
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :deploy_to, '/var/www/BI-iOS-2013_Server'
 set :scm, :git
+set :shared_children, shared_children + %w{public/uploads}
 
 set :format, :pretty
 set :log_level, :debug

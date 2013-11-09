@@ -9,52 +9,31 @@
 <pre>
 200
 [
-  {
-    "id":7,
-    "author":"Trixie",
-    "message":"Trixie znovu útočí..",
-    "image":{
+   {
+      "id":2,
+      "message":"moje prvni zprava",
       "image":{
-        "url":"/uploads/feed/image/7/Trixie_walking_off_the_stage_S1E06.png",
-        "thumb":{
-          "url":"/uploads/feed/image/7/thumb_Trixie_walking_off_the_stage_S1E06.png"
-        },
-        "thumb_retina":{
-          "url":"/uploads/feed/image/7/thumb_retina_Trixie_walking_off_the_stage_S1E06.png"
-        },
-        "gallery":{
-          "url":"/uploads/feed/image/7/gallery_Trixie_walking_off_the_stage_S1E06.png"
-        },
-        "gallery_retina":{
-          "url":"/uploads/feed/image/7/gallery_retina_Trixie_walking_off_the_stage_S1E06.png"
-        }
-      }
-    },
-    "url":"http://localhost:3000/feeds/7.json"
-  },
-  {
-    "id":9,
-    "author":"Luna",
-    "message":"message",
-    "image":{
-      "image":{
-        "url":"/uploads/feed/image/9/princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png",
-        "thumb":{
-          "url":"/uploads/feed/image/9/thumb_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
-        },
-        "thumb_retina":{
-          "url":"/uploads/feed/image/9/thumb_retina_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
-        },
-        "gallery":{
-          "url":"/uploads/feed/image/9/gallery_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
-        },
-        "gallery_retina":{
-          "url":"/uploads/feed/image/9/gallery_retina_princess_luna___what__no_feast__you_say__by_powerpuncher-d5ss784.png"
-        }
-      }
-    },
-    "url":"http://localhost:3000/feeds/9.json"
-  }
+         "image":{
+            "url":"/uploads/feed/image/2/darujspravne.png",
+            "thumb":{
+               "url":"/uploads/feed/image/2/thumb_darujspravne.png"
+            },
+            "thumb_retina":{
+               "url":"/uploads/feed/image/2/thumb_retina_darujspravne.png"
+            },
+            "gallery":{
+               "url":"/uploads/feed/image/2/gallery_darujspravne.png"
+            },
+            "gallery_retina":{
+               "url":"/uploads/feed/image/2/gallery_retina_darujspravne.png"
+            }
+         }
+      },
+      "account":{
+         "nick":"kuba hladik"
+      },
+      "url":"http://bi-ios-2013_server.hippotaps.com/feeds/2.json"
+   }
 ]
 </pre>
 
@@ -65,7 +44,7 @@
 <pre>
 {
   "feed" : {
-	  "author" : "kuba hladik",
+	  "account_id" : 7,
 	  "message" : "ahoj hello dobry den"
   }
 }
@@ -86,9 +65,9 @@ Content-Type: multipart/form-data; boundary=Boundary+0xAbCdEfGbOuNdArY
 <h4>Body</h4>
 <pre>
 --Boundary+0xAbCdEfGbOuNdArY
-Content-Disposition: form-data; name="feed[author]"
+Content-Disposition: form-data; name="feed[account_id]"
 
-jakub hladi
+7
 --Boundary+0xAbCdEfGbOuNdArY
 Content-Disposition: form-data; name="feed[message]"
 
