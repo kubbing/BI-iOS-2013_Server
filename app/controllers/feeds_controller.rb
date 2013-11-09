@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    @feeds = Feed.all.sort_by(&:created_at)
   end
 
   # GET /feeds/1
