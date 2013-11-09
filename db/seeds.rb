@@ -9,6 +9,15 @@
 Push::ConfigurationApns.delete_all
 
 case Rails.env
+when "development"
+	Push::ConfigurationApns.create(
+		app: 'cz.cvut.fit.bi-ios.apns', 
+		connections: 2, 
+		enabled: true,
+		certificate: File.read('certificates/sandbox.pem', encoding: 'BINARY'),
+		feedback_poll: 60,
+		sandbox: true
+	)
 when "staging"
 	Push::ConfigurationApns.create(
 		app: 'cz.cvut.fit.bi-ios.apns', 
