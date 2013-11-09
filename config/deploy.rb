@@ -43,6 +43,7 @@ namespace :deploy do
     desc 'Symlink uploads'
     task :uploads do
       on roles(:app) do |host|
+        execute "mkdir -p #{shared_path}/public/uploads"
         execute "ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads"
       end
     end
