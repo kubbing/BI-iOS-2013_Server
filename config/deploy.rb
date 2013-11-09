@@ -7,8 +7,7 @@ set :repo_url, 'git@github.com:kubbing/BI-iOS-2013_Server.git'
 set :deploy_to, '/var/www/BI-iOS-2013_Server'
 set :scm, :git
 
-set :uploads_dirs, %w(public/uploads) 
-set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
+set :linked_dirs, fetch(:linked_dirs) + %w{public/uploads}
 
 set :format, :pretty
 set :log_level, :debug
