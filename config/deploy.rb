@@ -1,5 +1,6 @@
 set :application, 'BI-iOS-2013_Server'
 set :repo_url, 'git@github.com:kubbing/BI-iOS-2013_Server.git'
+set :branch, 'dev'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
