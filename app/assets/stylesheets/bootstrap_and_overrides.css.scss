@@ -1,0 +1,11 @@
+@import "twitter/bootstrap";
+
+table { 
+	@extend .table; 
+	@extend .table-striped;
+	@extend .table-hover;
+}
+
+input.submit {
+	@extend .btn;
+}

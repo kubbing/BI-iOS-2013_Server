@@ -6,9 +6,7 @@
       <th>Author</th>
       <th>Message</th>
       <th>Image</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -18,9 +16,9 @@
         <td><%= feed.author %></td>
         <td><%= feed.message %></td>
         <td><%= link_to( image_tag(feed.image.thumb.url), feed.image.url, target: '_blank' ) %></td>
-        <td><%= link_to 'Show', feed %></td>
-        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', feed, class: 'btn btn-default btn-sm' %>
+        <%= link_to 'Edit', edit_feed_path(feed), class: 'btn btn-default btn-sm' %>
+        <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Feed', new_feed_path %>
+<%= link_to 'New Feed', new_feed_path, class: 'btn btn-default' %>

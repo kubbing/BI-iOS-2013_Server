@@ -1,4 +1,9 @@
 Restofka::Application.routes.draw do
+  resources :accounts
+
+  get "notification" => 'notification#index', as: :notification
+  post "notification" => 'notification#create', as: :notification_create
+  
   get "welcome/index"
   resources :feeds
 

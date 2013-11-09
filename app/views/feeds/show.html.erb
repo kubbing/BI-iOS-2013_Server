@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Author:</strong>
   <%= @feed.author %>
@@ -15,5 +13,5 @@
   <%= link_to( image_tag(@feed.image.gallery.url), @feed.image.url, target: '_blank' ) %>
 </p>
 
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+<%= link_to 'Edit', edit_feed_path(@feed), class: 'btn btn-default' %> |
+<%= link_to 'Back', feeds_path, class: 'btn btn-default' %>
