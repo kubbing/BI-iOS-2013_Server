@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  alert: MyString
+  badge: 1
+  data: MyText
+  sound: MyString
+  token: MyString
+
+two:
+  alert: MyString
+  badge: 1
+  data: MyText
+  sound: MyString
+  token: MyString
