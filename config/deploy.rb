@@ -44,8 +44,6 @@ namespace :deploy do
       execute 'ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads'
     end
   end
-  
-  after :symlink_release, :symlink_uploads
 
 end
 
