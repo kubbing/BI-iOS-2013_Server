@@ -7,8 +7,6 @@ set :repo_url, 'git@github.com:kubbing/BI-iOS-2013_Server.git'
 set :deploy_to, '/var/www/BI-iOS-2013_Server'
 set :scm, :git
 
-set :linked_dirs, fetch(:linked_dirs) + %w{public/uploads}
-
 set :format, :pretty
 set :log_level, :debug
 # set :pty, true
@@ -25,7 +23,7 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+      execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
@@ -39,5 +37,15 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
+  
+  desc 'Symlink uploads'
+  task :symlink_uploads do
+    on roles(:app) do |host|
+      execute 'ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads'
+    end
+  end
+  
+  after :symlink_release, :symlink_uploads
 
 end
+
