@@ -107,7 +107,7 @@ Content-Type: image/png
 <h2>Delete feed</h2>
 
 <h3>Request</h3>
-<pre>DELETE /feeds/<id>.json</pre>
+<pre>DELETE /feeds/id.json</pre>
 
 <h3>Response</h3>
 <pre>
@@ -130,6 +130,15 @@ Content-Type: image/png
 <h3>Response</h3>
 <pre>
 201
+</pre>
+
+<h2>Destroy account</h2>
+Note: this deletes existing account-related feeds.
+<h3>Request</h3>
+<pre>DELETE /accounts/id.json</pre>
+<h3>Response</h3>
+<pre>
+204
 </pre>
 
 
