@@ -4,7 +4,7 @@ class NotificationController < ApplicationController
 
   def index
     @notification = Notification.create
-    @notification.app = 'cz.cvut.fit.bi-ios.aps'
+    @notification.app = 'cz.cvut.fit.bi-ios.apns'
     @notification.alert = 'Notifikace!'
     @notification.badge = 13
     @notification.sound = ""
