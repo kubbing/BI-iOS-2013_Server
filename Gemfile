@@ -47,6 +47,7 @@ gem 'carrierwave'
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 # Use for push notifications
