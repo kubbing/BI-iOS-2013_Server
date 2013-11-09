@@ -38,12 +38,18 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
   
-  desc 'Symlink uploads'
-  task :symlink_uploads do
-    on roles(:app) do |host|
-      execute 'ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads'
+  namespace :symlink do
+  
+    desc 'Symlink uploads'
+    task :uploads do
+      on roles(:app) do |host|
+        execute "ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads"
+      end
     end
+  
+    after :shared, 'deploy:symlink:uploads'
+    
   end
-
+  
 end
 
