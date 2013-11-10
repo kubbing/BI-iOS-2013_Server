@@ -76,9 +76,9 @@ namespace :deploy do
       end
     end
   
-    after :stop, 'deploy:push:stop'
-    after :start, 'deploy:push:start'
-    before :restart, 'deploy:push:restart'  
+    after :started, 'deploy:push:stop'
+    after :finished, 'deploy:push:start'
+    # before :restart, 'deploy:push:restart'  
   end
   
   
