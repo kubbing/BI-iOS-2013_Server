@@ -28,7 +28,7 @@ namespace :deploy do
   end
 
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    on roles(:app), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
@@ -60,6 +60,8 @@ namespace :deploy do
         execute "cd #{current_path}; nohup bundle exec push #{fetch(:stage)} -p #{fetch(:pushd_pid_file)} >> #{current_path}/log/push.log 2>&1 &", :pty => false
       end
     end
+    
+    before :start, 'deploy:push:stop'
   
     desc 'Stop the push daemon'
     task :stop do
@@ -78,10 +80,7 @@ namespace :deploy do
   
     after :started, 'deploy:push:stop'
     after :finished, 'deploy:push:start'
-    # before :restart, 'deploy:push:restart'  
   end
-  
-  
-  
+
 end
 
