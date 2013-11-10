@@ -39,7 +39,6 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
   
   namespace :symlink do
-  
     desc 'Symlink uploads'
     task :uploads do
       on roles(:app) do |host|
@@ -50,7 +49,30 @@ namespace :deploy do
     end
   
     after :shared, 'deploy:symlink:uploads'
-    
+  end
+  
+  after :stop,    'push:stop'
+  after :start,   'push:start'
+  before :restart, 'push:restart'
+  
+  set(:pushd_pid_file) { "#{current_path}/tmp/pids/push_daemon.pid" }
+  
+  namespace :push do
+    desc 'Start the push daemon'
+    task :start, :roles => :worker do
+      execute "cd #{current_path} ; nohup bundle exec push #{rails_env} -p #{pushd_pid_file} >> #{current_path}/log/push.log 2>&1 &", :pty => false
+    end
+  
+    desc 'Stop the push daemon'
+    task :stop, :roles => :worker do
+      execute "if [ -d #{current_path} ] && [ -f #{pushd_pid_file} ] && kill -0 `cat #{pushd_pid_file}`> /dev/null 2>&1; then kill -KILL `cat #{pushd_pid_file}` ; else echo 'push daemon is not running'; fi"
+    end
+  
+    desc "Restart the push daemon"
+    task :restart, :roles => :worker do
+      stop
+      start
+    end
   end
   
 end
