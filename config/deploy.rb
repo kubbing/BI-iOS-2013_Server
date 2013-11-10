@@ -57,29 +57,31 @@ namespace :deploy do
     desc 'Start the push daemon'
     task :start do
       on roles(:app) do
-        execute "cd #{current_path} ; nohup bundle exec push #{:stage} -p #{pushd_pid_file} >> #{current_path}/log/push.log 2>&1 &", :pty => false
+        execute "cd #{current_path}; nohup bundle exec push #{fetch(:stage)} -p #{fetch(:pushd_pid_file)} >> #{current_path}/log/push.log 2>&1 &", :pty => false
       end
     end
   
     desc 'Stop the push daemon'
     task :stop do
-      on roles(:all) do
-      execute "if [ -d #{current_path} ] && [ -f #{pushd_pid_file} ] && kill -0 `cat #{pushd_pid_file}`> /dev/null 2>&1; then kill -KILL `cat #{pushd_pid_file}` ; else echo 'push daemon is not running'; fi"
+      on roles(:app) do
+      execute "if [ -d #{current_path} ] && [ -f #{fetch(:pushd_pid_file)} ] && kill -0 `cat #{fetch(:pushd_pid_file)}`> /dev/null 2>&1; then kill -KILL `cat #{fetch(:pushd_pid_file)}` ; else echo 'push daemon is not running'; fi"
       end
     end
   
     desc "Restart the push daemon"
     task :restart do
-      on roles:(:all) do
+      on roles:(:app) do
         stop
         start
       end
     end
-    
-    after :stop,    'push:stop'
-    after :start,   'push:start'
-    before :restart, 'push:restart'
+  
+    after :stop, 'deploy:push:stop'
+    after :start, 'deploy:push:start'
+    before :restart, 'deploy:push:restart'  
   end
+  
+  
   
 end
 
