@@ -14,22 +14,23 @@ class NotificationController < ApplicationController
   def create
   @notification = Notification.create(notification_params)
   if @notification.token
-      if @notification.token.length
-      Push::MessageApns.create(
-        app: @notification.app,
-        device: @notification.token,
-        alert: @notification.alert,
-        sound: @notification.sound,
-        badge: @notification.badge,
-        expiry: 1.day.to_i, 
-        attributes_for_device: ActiveSupport::JSON.decode(@notification.data)
-      )
-      redirect_to notification_path, notice: "1 notification enqueued"
-      end
+    Push::MessageApns.create(
+      app: @notification.app,
+      device: @notification.token,
+      alert: @notification.alert,
+      sound: @notification.sound,
+      badge: @notification.badge,
+      expiry: 1.day.to_i, 
+      attributes_for_device: ActiveSupport::JSON.decode(@notification.data)
+    )
+    redirect_to notification_path, notice: "1 notification enqueued"
   else
     @tokens = Account.uniq.pluck(:token)
     counter = 0;
     @tokens.each do |token|
+      unless token
+        next
+      end
       unless token.length > 0
         next
       end
