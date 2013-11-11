@@ -12,43 +12,40 @@ class NotificationController < ApplicationController
   end
   
   def create
-  @notification = Notification.create(notification_params)
-  if @notification.token
-    Push::MessageApns.create(
-      app: @notification.app,
-      device: @notification.token,
-      alert: @notification.alert,
-      sound: @notification.sound,
-      badge: @notification.badge,
-      expiry: 1.day.to_i, 
-      attributes_for_device: ActiveSupport::JSON.decode(@notification.data)
-    )
-    redirect_to notification_path, notice: "1 notification enqueued"
-  else
-    @tokens = Account.uniq.pluck(:token)
-    counter = 0;
-    @tokens.each do |token|
-      unless token
-        next
-      end
-      unless token.length > 0
-        next
-      end
-    
+    @notification = Notification.create(notification_params)
+    if @notification.token.present?
       Push::MessageApns.create(
         app: @notification.app,
-        device: token,
+        device: @notification.token,
         alert: @notification.alert,
         sound: @notification.sound,
         badge: @notification.badge,
         expiry: 1.day.to_i, 
         attributes_for_device: ActiveSupport::JSON.decode(@notification.data)
       )
-      counter = counter + 1
+      redirect_to notification_path, notice: "1 notification enqueued"
+    else
+      @tokens = Account.uniq.pluck(:token)
+      counter = 0;
+      @tokens.each do |token|
+        if token.blank?
+          next
+        end
+      
+        Push::MessageApns.create(
+          app: @notification.app,
+          device: token,
+          alert: @notification.alert,
+          sound: @notification.sound,
+          badge: @notification.badge,
+          expiry: 1.day.to_i, 
+          attributes_for_device: ActiveSupport::JSON.decode(@notification.data)
+        )
+        counter = counter + 1
+      end
     end
-    redirect_to notification_path, notice: "#{counter} notifications enqueued"
-  end
     
+    redirect_to notification_path, notice: "#{counter} notifications enqueued"
   end
   
   private
