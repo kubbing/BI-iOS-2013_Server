@@ -46,7 +46,10 @@ class NotificationController < ApplicationController
       end
     end
     
-    redirect_to notification_path, notice: "#{counter} notifications enqueued"
+    respond_to do |format|
+      format.html { redirect_to notification_path, notice: "#{counter} notifications enqueued" }
+      format.json { head :created }
+    end
   end
   
   private
