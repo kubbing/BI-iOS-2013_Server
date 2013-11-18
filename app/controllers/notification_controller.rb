@@ -48,7 +48,7 @@ class NotificationController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to notification_path, notice: "#{counter} notifications enqueued" }
-      format.json { render json: { notice: "#{counter} notifications enqueued", status: :created } }
+      format.json { render json: { notice: "#{counter} notifications enqueued" }, status: :created }
     end
   end
   
