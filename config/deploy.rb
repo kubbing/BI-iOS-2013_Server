@@ -84,3 +84,23 @@ namespace :deploy do
 
 end
 
+namespace :rails do
+  desc "Remote console"
+  task :console do
+    on roles(:app) do
+      run_interactively "bundle exec rails console #{fetch(:stage)}"
+    end
+  end
+
+  desc "Remote dbconsole"
+  task :dbconsole do
+    on roles(:app) do
+      run_interactively "bundle exec rails dbconsole #{fetch(:stage)}"
+    end
+  end
+end
+
+def run_interactively(command)
+  execute "cd #{current_path} && #{command}"
+end
+
