@@ -1,10 +1,15 @@
 Restofka::Application.routes.draw do
-  resources :accounts
-
+  
   get "notification" => 'notification#index', as: :notification
   post "notification" => 'notification#create', as: :notification_create
   
   get "welcome/index"
+  
+  get "social/around" => 'social#around', as: :social_around
+  get "social/around_form" => 'social#around_form', as: :social_around_form
+
+  resources :accounts
+  resources :profiles
   resources :feeds
 
   # The priority is based upon order of creation: first created -> highest priority.

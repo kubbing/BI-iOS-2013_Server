@@ -40,20 +40,24 @@ class FeedImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
+  version :thumb_80 do
     process :resize_to_fill => [80, 80]
   end
   
-  version :thumb_retina do
+  version :thumb_160 do
     process :resize_to_fill => [160, 160]
   end
   
-  version :gallery do
-    process :resize_to_fit => [320, 480]
+  version :thumb_320 do
+    process :resize_to_fill => [320, 320]
   end
   
-  version :gallery_retina do
-    process :resize_to_fit => [640, 960]
+  version :gallery_480 do
+    process :resize_to_fit => [480, 480]
+  end
+  
+  version :gallery_960 do
+    process :resize_to_fit => [960, 960]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

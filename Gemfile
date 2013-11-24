@@ -29,6 +29,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Skip that shit thing
+gem 'quiet_assets', :group => :development
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -58,5 +61,8 @@ gem 'push-apns'
 # User New Relic monitoring
 gem 'newrelic_rpm'
 
+# Geo stuff awesome
+gem 'geokit-rails'
+
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]

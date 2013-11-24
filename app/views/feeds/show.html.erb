@@ -1,6 +1,6 @@
 <p>
   <strong>Author:</strong>
-  <%= @feed.account.nick %>
+  <%= @feed.account.profile.nick %>
 </p>
 
 <p>
@@ -10,7 +10,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= link_to( image_tag(@feed.image.gallery.url), @feed.image.url, target: '_blank' ) %>
+  <%= link_to( image_tag(@feed.image.thumb_320  .url), @feed.image.url, target: '_blank' ) %>
 </p>
 
 <%= link_to 'Edit', edit_feed_path(@feed), class: 'btn btn-default' %> |

@@ -13,9 +13,9 @@
   <tbody>
     <% @feeds.each do |feed| %>
       <tr>
-        <td><%= feed.account.nick %></td>
+        <td><%= feed.account.profile.nick %></td>
         <td><%= feed.message %></td>
-        <td><%= link_to( image_tag(feed.image.thumb.url), feed.image.url, target: '_blank' ) %></td>
+        <td><%= link_to( image_tag(feed.image.thumb_80.url), feed.image.url, target: '_blank' ) %></td>
         <td><%= link_to 'Show', feed, class: 'btn btn-default btn-sm' %>
         <%= link_to 'Edit', edit_feed_path(feed), class: 'btn btn-default btn-sm' %>
         <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm btn-danger' %></td>

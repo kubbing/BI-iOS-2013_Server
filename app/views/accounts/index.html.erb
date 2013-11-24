@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Login</th>
-      <th>Nick</th>
       <th>Token</th>
       <th></th>
     </tr>
@@ -14,7 +13,6 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.login %></td>
-        <td><%= account.nick %></td>
         <td><%= account.token %></td>
         <td><%= link_to 'Show', account, class: 'btn btn-default btn-sm' %>
         <%= link_to 'Edit', edit_account_path(account), class: 'btn btn-default btn-sm' %>

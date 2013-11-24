@@ -49,7 +49,7 @@
 	<div class='form-group'>
 			<%= f.label :token, class: 'col-sm-2 control-label' %>
 			<div class="col-sm-3">
-				<%= f.select :token, Account.all.collect { |acc| [acc.nick, acc.token] }, { include_blank: true }, class: 'form-control' %>
+				<%= f.select :token, Account.all.collect { |acc| [acc.profile.nick, acc.token]}, { include_blank: true }, class: 'form-control' %>
 			</div>
 			<p class="help-block">Default: send to everyone.</>
 	</div>

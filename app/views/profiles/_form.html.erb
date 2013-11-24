@@ -1,0 +1,52 @@
+<%= form_for(@profile, html: { multipart: true, class: 'form-horizontal' }) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+      <%= f.label :nick, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_field :nick, placeholder: 'your pick', class: 'form-control' %>  
+      </div>
+  </div>
+  
+  <div class='form-group'>
+      <%= f.label :bio, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_area :bio, placeholder: 'about…', class: 'form-control' %>  
+      </div>
+  </div>
+  
+  <div class='form-group'>
+      <%= f.label :latitude, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_field :latitude, placeholder: 'GPS coordinate latitude', class: 'form-control' %>  
+      </div>
+  </div>
+  
+  <div class='form-group'>
+      <%= f.label :longitude, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-5">
+        <%= f.text_field :longitude, placeholder: 'GPS coordinate longitude', class: 'form-control' %>  
+      </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :image, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-5">
+      <%= f.file_field :image, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="actions col-md-offset-2">
+    <%= f.submit "Save Feed", class: 'btn' %>
+  </div>
+<% end %>

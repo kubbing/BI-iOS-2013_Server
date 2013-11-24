@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109161238) do
+ActiveRecord::Schema.define(version: 20131124013835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: true do |t|
     t.string   "login"
-    t.string   "nick"
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -30,6 +29,9 @@ ActiveRecord::Schema.define(version: 20131109161238) do
     t.datetime "updated_at"
     t.string   "image"
     t.integer  "account_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "location"
   end
 
   add_index "feeds", ["account_id"], name: "index_feeds_on_account_id", using: :btree
@@ -44,6 +46,20 @@ ActiveRecord::Schema.define(version: 20131109161238) do
     t.datetime "updated_at"
     t.string   "app"
   end
+
+  create_table "profiles", force: true do |t|
+    t.string   "nick"
+    t.text     "bio"
+    t.string   "image"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "account_id"
+    t.string   "address"
+  end
+
+  add_index "profiles", ["account_id"], name: "index_profiles_on_account_id", using: :btree
 
   create_table "push_configurations", force: true do |t|
     t.string   "type",                        null: false

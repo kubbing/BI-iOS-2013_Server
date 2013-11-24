@@ -14,7 +14,7 @@
   <div class='form-group'>
       <%= f.label :account, class: 'col-sm-2 control-label' %>
       <div class="col-sm-5">
-        <%= f.select :account_id, Account.all.collect { |acc| [acc.nick, acc.id] }, {}, class: 'form-control' %>
+        <%= f.select :account_id, Account.all.collect { |acc| [acc.profile.nick, acc.id] }, {}, class: 'form-control' %>
       </div>
   </div>
 
