@@ -27,6 +27,9 @@ class FeedsController < ApplicationController
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
+    profile = @feed.account.profile
+    @feed.latitude = profile.latitude
+    @feed.longitude = profile.longitude
 
     respond_to do |format|
       if @feed.save

@@ -4,9 +4,10 @@ Restofka::Application.routes.draw do
   post "notification" => 'notification#create', as: :notification_create
   
   get "welcome/index"
-  
+
+  get "social" => 'social#index', as: :social  
   get "social/around" => 'social#around', as: :social_around
-  get "social/around_form" => 'social#around_form', as: :social_around_form
+
 
   resources :accounts
   resources :profiles

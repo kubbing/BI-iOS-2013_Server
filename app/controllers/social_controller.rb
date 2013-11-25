@@ -3,8 +3,7 @@ class SocialController < ApplicationController
   before_action :distance, only: [:around]
   before_action :profile, only: [:around]
   
-  def around_form
-    
+  def index
   end
   
   def around
