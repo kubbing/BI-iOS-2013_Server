@@ -6,6 +6,7 @@ class Profile < ActiveRecord::Base
 	validates_uniqueness_of :nick
 	
 	belongs_to :account
+  validates_presence_of :account
 	
 	acts_as_mappable default_units: :kms, default_formula: :sphere, lat_column_name: :latitude, lng_column_name: :longitude
 	
