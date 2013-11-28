@@ -10,29 +10,36 @@
 200
 [
    {
-      "id":2,
-      "message":"moje prvni zprava",
+      "id":6,
+      "message":"muj vip feed",
       "image":{
          "image":{
-            "url":"/uploads/feed/image/2/darujspravne.png",
-            "thumb":{
-               "url":"/uploads/feed/image/2/thumb_darujspravne.png"
+            "url":"/uploads/feed/image/6/Logo-Flowknight-Blue.png",
+            "thumb_80":{
+               "url":"/uploads/feed/image/6/thumb_80_Logo-Flowknight-Blue.png"
             },
-            "thumb_retina":{
-               "url":"/uploads/feed/image/2/thumb_retina_darujspravne.png"
+            "thumb_160":{
+               "url":"/uploads/feed/image/6/thumb_160_Logo-Flowknight-Blue.png"
             },
-            "gallery":{
-               "url":"/uploads/feed/image/2/gallery_darujspravne.png"
+            "thumb_320":{
+               "url":"/uploads/feed/image/6/thumb_320_Logo-Flowknight-Blue.png"
             },
-            "gallery_retina":{
-               "url":"/uploads/feed/image/2/gallery_retina_darujspravne.png"
+            "gallery_480":{
+               "url":"/uploads/feed/image/6/gallery_480_Logo-Flowknight-Blue.png"
+            },
+            "gallery_960":{
+               "url":"/uploads/feed/image/6/gallery_960_Logo-Flowknight-Blue.png"
             }
          }
       },
       "account":{
-         "nick":"kuba hladik"
+         "id":26
       },
-      "url":"http://bi-ios-2013_server.hippotaps.com/feeds/2.json"
+      "profile":{
+         "id":10,
+         "nick":"my_nick"
+      },
+      "url":"http://localhost:3000/feeds/6.json"
    }
 ]
 </pre>
@@ -93,16 +100,18 @@ Content-Type: image/png
 204
 </pre>
 
-<h2>Create account</h2>
+<h2>Create account (its profile gets created Automatically)</h2>
 
 <h3>Request</h3>
 <pre>POST /accounts.json</pre>
+Note: nickname is optional, can be changed anytime later.
 <pre>
 {
   "account" : {
     "login" : "tady si neco vymyslete, zatim nepouzite",
-    "nick" : "vas nick",
-    "token" : "notifikancni token"
+  },
+  "profile" : {
+    "nick" : "tohle je muj awesome nick"
   }
 }
 </pre>
@@ -110,16 +119,52 @@ Content-Type: image/png
 <pre>
 201
 {
-   "id":9,
-   "login":null,
-   "nick":"muj_nick",
-   "token":null,
-   "created_at":"2013-11-09T19:29:52.757Z",
-   "updated_at":"2013-11-09T19:29:52.757Z"
+	"id":34,
+	"login":"login",
+	"token":null,
+	"created_at":"2013-11-28T14:42:13.732Z",
+	"updated_at":"2013-11-28T14:42:13.732Z",
+	"profile":
+	{
+		"id":18,
+		"nick":"1504d363-539a-440f-9a32-c971ca7d32ed",
+		"bio":null,
+		"image":
+		{
+			"image":
+			{
+				"url":null,
+				"thumb_80":
+				{
+					"url":null
+				},
+				"thumb_160":
+				{
+					"url":null
+				},
+				"thumb_320":
+				{
+					"url":null
+				},
+				"gallery_480":
+				{
+					"url":null
+				},
+				"gallery_960":
+				{
+					"url":null
+				}
+			}
+		},
+		"latitude":null,
+		"longitude":null
+	}
 }
 </pre>
+<h3>curl</h3>
+<pre>curl -X POST -H 'Content-Type: application/json' -d "{ \"account\" : { \"login\" : \"login\" }, \"profile\" : { \"nick\" : \"nick\" } }" 'http://localhost:3000/accounts.json'</pre>
 
-<h2>Destroy account</h2>
+<h2>Destroy account (destroys its linked profile)</h2>
 Note: this deletes existing account-related feeds.
 <h3>Request</h3>
 <pre>DELETE /accounts/id.json</pre>
@@ -127,7 +172,6 @@ Note: this deletes existing account-related feeds.
 <pre>
 204
 </pre>
-
 
 <h2>Update notification token, login, nick…</h2>
 
@@ -144,3 +188,135 @@ Note: this deletes existing account-related feeds.
 <pre>
 204
 </pre>
+
+<h2>Get profiles (for map and stuff)</h2>
+
+<h3>Request</h3>
+<pre>GET /profiles.json</pre>
+<h3>Response</h3>
+<pre>
+200
+[
+   {
+      "id":10,
+      "nick":"my_nick",
+      "bio":"moje dlouhe bio",
+      "image":{
+         "image":{
+            "url":null,
+            "thumb_80":{
+               "url":null
+            },
+            "thumb_160":{
+               "url":null
+            },
+            "thumb_320":{
+               "url":null
+            },
+            "gallery_480":{
+               "url":null
+            },
+            "gallery_960":{
+               "url":null
+            }
+         }
+      },
+      "latitude":50.0,
+      "longitude":14.0,
+      "updated_at":"2013-11-28T14:53:39.864Z",
+      "account":{
+         "id":26,
+         "token":""
+      },
+      "url":"http://localhost:3000/profiles/10.json"
+   },
+   {
+      "id":11,
+      "nick":"c7e8095c-dae5-41f3-aa2d-9bd4340d4217",
+      "bio":"",
+      "image":{
+         "image":{
+            "url":null,
+            "thumb_80":{
+               "url":null
+            },
+            "thumb_160":{
+               "url":null
+            },
+            "thumb_320":{
+               "url":null
+            },
+            "gallery_480":{
+               "url":null
+            },
+            "gallery_960":{
+               "url":null
+            }
+         }
+      },
+      "latitude":50.05,
+      "longitude":15.0,
+      "updated_at":"2013-11-24T14:24:22.010Z",
+      "account":{
+         "id":27,
+         "token":""
+      },
+      "url":"http://localhost:3000/profiles/11.json"
+   },
+   {
+      "id":12,
+      "nick":"7e333f27-8851-48d5-8129-1cd63e92828d",
+      "bio":"",
+      "image":{
+         "image":{
+            "url":null,
+            "thumb_80":{
+               "url":null
+            },
+            "thumb_160":{
+               "url":null
+            },
+            "thumb_320":{
+               "url":null
+            },
+            "gallery_480":{
+               "url":null
+            },
+            "gallery_960":{
+               "url":null
+            }
+         }
+      },
+      "latitude":50.05,
+      "longitude":16.0,
+      "updated_at":"2013-11-24T14:24:29.983Z",
+      "account":{
+         "id":28,
+         "token":""
+      },
+      "url":"http://localhost:3000/profiles/12.json"
+   }
+]
+</pre>
+
+<h2>Update Profile (multipart with image possible, same as feed)</h2>
+
+<h3>Request</h3>
+<pre>PUT /profiles/id.json</pre>
+<pre>
+{
+  "profile" : 
+  {
+    "nick" : "notifikancni token",
+    "bio" : "moje hodne dlouhe bio",
+    "latitude" : 50,
+    "longiutede" : 15
+  }
+}
+</pre>
+<h3>Response</h3>
+<pre>
+204
+</pre>
+<h3>curl</h3>
+<pre>curl -X PUT -H 'Content-Type: application/json' -d "{ \"profile\" : { \"nick\" : \"my_nick\", \"bio\" : \"moje dlouhe bio\", \"latitude\" : 50, \"longitude\" : 14 } }" 'http://localhost:3000/profiles/10.json'</pre>
