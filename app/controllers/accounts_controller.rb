@@ -25,15 +25,16 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @profile = Profile.new
+    @profile.save
     @account = Account.new(account_params)
     @account.profile = @profile
 
     respond_to do |format|
       if @account.save
-        @profile.save
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render action: 'show', status: :created, location: @account }
       else
+        @profile.destroy
         format.html { render action: 'new' }
         format.json { render json: @account.errors, status: :unprocessable_entity }
       end
