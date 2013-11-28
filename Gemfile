@@ -66,3 +66,6 @@ gem 'geokit-rails'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+
+# Charge students
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
