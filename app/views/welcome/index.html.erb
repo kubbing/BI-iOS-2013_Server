@@ -334,7 +334,7 @@ Note: missing token key causes notifications to be sent to everyone!
     "alert" : "lol notifikace curl",
     "data" : {}
     "badge" : 13
-		"token" : "udirwgetgtrgh worugh gu he token"
+    "token" : "udirwgetgtrgh worugh gu he token"
   }
 }
 </pre>
@@ -342,5 +342,5 @@ Note: missing token key causes notifications to be sent to everyone!
 <pre>
 204
 </pre>
-<h3>curl</h3>
+<h3>curl (missing token, notification to everyone)</h3>
 <pre>curl -v -X POST -H 'Content-Type: application/json' -d "{ \"notification\" : { \"app\" : \"cz.cvut.fit.bi-ios.apns\", \"alert\" : \"lol notifikace curl\", \"badge\" : 1, \"data\" : \"{}\" } }" "http://bi-ios-2013_server.hippotaps.com/notification.json"</pre>
