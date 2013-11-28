@@ -320,3 +320,27 @@ Note: this deletes existing account-related feeds.
 </pre>
 <h3>curl</h3>
 <pre>curl -X PUT -H 'Content-Type: application/json' -d "{ \"profile\" : { \"nick\" : \"my_nick\", \"bio\" : \"moje dlouhe bio\", \"latitude\" : 50, \"longitude\" : 14 } }" 'http://localhost:3000/profiles/10.json'</pre>
+
+<h2>Send single notification</h2>
+
+<h3>Request</h3>
+<pre>POST /notifications.json</pre>
+Note: missing token key causes notifications to be sent to everyone!
+<pre>
+{
+  "notification" : 
+  {
+    "app" : "cz.cvut.fit.bi-ios.apns",
+    "alert" : "lol notifikace curl",
+    "data" : {}
+    "badge" : 13
+		"token" : "udirwgetgtrgh worugh gu he token"
+  }
+}
+</pre>
+<h3>Response</h3>
+<pre>
+204
+</pre>
+<h3>curl</h3>
+<pre>curl -v -X POST -H 'Content-Type: application/json' -d "{ \"notification\" : { \"app\" : \"cz.cvut.fit.bi-ios.apns\", \"alert\" : \"lol notifikace curl\", \"badge\" : 1, \"data\" : \"{}\" } }" "http://bi-ios-2013_server.hippotaps.com/notification.json"</pre>
